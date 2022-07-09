@@ -13,6 +13,7 @@
 // The cleanup() function is called ONLY if the "try" statement returns an
 // error produced by canFail().
 //
+
 const std = @import("std");
 
 var counter: u32 = 0;
@@ -32,7 +33,7 @@ fn makeNumber() MyErr!u32 {
 
     // Please make the "failed" message print ONLY if the makeNumber()
     // function exits with an error:
-    std.debug.print("failed!\n", .{});
+    errdefer std.debug.print("failed!\n", .{});
 
     var num = try getNumber(); // <-- This could fail!
 
